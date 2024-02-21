@@ -2,16 +2,22 @@ import { useState } from "react";
 
 function App() {
 
-  const [name, setName] = useState("Zaid");
+  const [textBoxValue, setTextBoxValue] = useState("")
+  const [name, setName] = useState("")
 
   const handleChange = (e) => {
-    setName(e.target.value)
+    setTextBoxValue(e.target.value)
+  }
+
+  const handleClick = () => {
+    setName(textBoxValue)
   }
 
   return (
     <div>
-      <input type="text" placeholder="Enter your name" onChange={handleChange}/>
-      <p>Hi {name}, How are you today?</p>
+      <input type="text" value={textBoxValue} placeholder="Enter your name" onChange={handleChange}/>
+      <p>Hi {name || 'User'}, How are you today?</p>
+      <button onClick={handleClick}>Update</button>
     </div>
   );
 }
